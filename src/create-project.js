@@ -1,15 +1,5 @@
 import closeImg from './img/window-close.svg';
 
-const getProjectName= () => {
-    
-    let projectName;
-    projectName=prompt("Name of the project : ")
-
-
-    return(projectName);
-    
-    
-};
 
 const CreateProject= (name) => {
     const projectContainer=document.querySelector(".projects");
@@ -34,4 +24,5 @@ const CreateProject= (name) => {
 
 
 
-export {CreateProject, getProjectName};
+
+export {CreateProject};

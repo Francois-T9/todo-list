@@ -1,10 +1,13 @@
-import {CreateDefault, DisplayProjectName} from "./default.js";
-import { CreateProject, getProjectName } from "./create-project.js";
+import {CreateProject} from "./create-project.js";
+import { getProjectName } from "./get-project-name.js";
+import { DisplayProjectName } from "./display-project.js";
 import "./styles.css";
 
 
 
-const handleClick=(() => {
+DisplayProjectName(CreateProject("Default")); //creates a default project with the name "Default"
+
+const handleClick=(() => { //creates a project in the DOM and display it
     const createProjectButton=document.querySelector("#create-button");
     createProjectButton.addEventListener("click", () => {
         CreateProject(getProjectName());
@@ -14,4 +17,4 @@ const handleClick=(() => {
 
 
 
-DisplayProjectName(CreateDefault()); //takes name of project as argument, so creataDefault should return the project name
+
