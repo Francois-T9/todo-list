@@ -1,4 +1,103 @@
-/* styles.css */
-body {
-    background-color: rebeccapurple;
-  }
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto";
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 4fr;
+  height: 100vh;
+}
+
+.container .header {
+  grid-row: 1;
+  grid-column: 1/-1;
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  padding: 20px;
+  
+}
+
+.container .header h1 {
+  color: white;
+  grid-column: 2;
+}
+
+.container .sidebar {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  grid-row: 1/-1;
+  grid-column: 1;
+  background-color: bisque;
+ 
+
+}
+.container .sidebar .title {
+  justify-self: center;
+  align-self: center;
+}
+
+.container .sidebar .project-menu {
+  display: flex;
+  flex-direction: column;
+  
+  width: 100%;
+  grid-row: 2;
+  
+  justify-self: center;
+  gap: 40px;
+  align-items: center;
+ 
+}
+
+.container .sidebar .project-menu .projects {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 4fr 1fr;
+}
+
+.container .sidebar .project-menu .projects button {
+  grid-column: 1;
+  background-color: rgb(0, 103, 199);
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 20px;
+  padding: 10px;
+  width: 8em;
+  justify-self: center;
+  height: 3em;
+ 
+  
+}
+.container .sidebar .project-menu .projects img {
+  width: 2em;
+}
+
+.container .sidebar #create-button {
+  background-color: rgb(21, 250, 174);
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 20px;
+  padding: 10px;
+  width: 10em;
+  justify-self: center;
+  height: 3em;
+  cursor: pointer;
+
+}
+
+.container .main-container {
+  grid-row: 2;
+  grid-column: 2;
+  padding: 20px;
+}
