@@ -52,8 +52,12 @@
   align-items: center;
  
 }
-
 .container .sidebar .project-menu .projects {
+  display: grid;
+  gap: 20px;
+
+}
+.container .sidebar .project-menu .projects div {
   width: 100%;
   display: grid;
   gap: 10px;
@@ -100,4 +104,33 @@
   grid-row: 2;
   grid-column: 2;
   padding: 20px;
+  display: grid;
+  /* grid-template-rows: 1fr 10fr; */
+  background-color: aliceblue;
 }
+
+.container .main-container > div {
+  
+  display: none;
+  grid-template-rows: 1fr 10fr;
+  background-color: aquamarine;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.container .main-container > div h3 {
+  
+  grid-row: 1;
+}
+
+
+.container .main-container > div >div {
+  
+  display: grid;
+    grid-template-columns: repeat(3,calc(100%/3));
+    grid-template-rows: repeat(2,calc(100%/2));
+    gap: 20px;
+    visibility: hidden;
+  grid-row: 2;
+}
+

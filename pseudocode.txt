@@ -1,0 +1,34 @@
+//index.js
+
+
+//create-project.js
+
+createProject (name) {     // this should also create a container with the name of the project
+    select projectContainer;
+    if name =null {
+
+    }
+    else {
+        create projectDiv
+        projectDiv.className=name;
+
+        create button
+        button id=name
+        button.value=name
+        create closeButton
+        
+        append button and closeButton to projectDiv
+
+        projectContainer.forEach (elem) {
+             if closeButton is clicked {
+            delete elem
+        }
+        }
+       
+
+        
+    }
+
+    append projectDiv to projectContainer
+
+}

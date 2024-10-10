@@ -2,24 +2,38 @@ import closeImg from './img/window-close.svg';
 
 
 const CreateProject= (name) => {
-    const projectContainer=document.querySelector(".projects");
+    const projectSidebar=document.querySelector(".projects");
+    const mainContainer=document.querySelector(".main-container");
 
+    
     if(name==null) {
-
+        
     }
     else {
-        const newProject=document.createElement("button");
+        const projectDivSidebar=document.createElement("div");
+        projectDivSidebar.className=`${name}`;
         
-        newProject.id=`${name}`;            // to be chosen by user
-        newProject.textContent=`${name}`;      // to be chosen by user
+        const projectSelector=document.createElement("button");
+        
+        projectSelector.id=`${name}`;            // to be chosen by user
+        projectSelector.textContent=`${name}`;      // to be chosen by user
         const closeButton=document.createElement("img");
         closeButton.src=closeImg;
+        projectDivSidebar.append(projectSelector,closeButton);
+        projectSidebar.appendChild(projectDivSidebar);
         
+        const projectContainer=document.createElement("div");
+        projectContainer.className=name;
         
-        projectContainer.append(newProject,closeButton);
-        return(name);
+        const todoContainer=document.createElement("div");
+        todoContainer.className=`todo-${name}`;
 
+        projectContainer.append(todoContainer);
+        mainContainer.appendChild(projectContainer);
+        return(name);
+        
     }
+    
 };
 
 
