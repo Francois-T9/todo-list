@@ -24,6 +24,8 @@ const DisplayProjectName=(name) => {
             containerTitleText.textContent = `You are currently working on ${elem.id} project`;
 
             projectMainContainer.style.display = 'grid'; // Set display to 'grid' to show it
+            projectMainContainer.style.visibility="visible"
+            console.log(projectMainContainer.style.visibility);
             
             headerTitle.textContent = `Project : ${elem.id}`;
             

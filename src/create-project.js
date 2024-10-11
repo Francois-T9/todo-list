@@ -25,10 +25,14 @@ const CreateProject= (name) => {
         const projectContainer=document.createElement("div");
         projectContainer.className=name;
         
-        const todoContainer=document.createElement("div");
-        todoContainer.className=`todo-${name}`;
+        // const todoContainer=document.createElement("div");
+        // todoContainer.className=`todo-${name}`;
 
-        projectContainer.append(todoContainer);
+        const todoBtn=document.createElement("button");
+        todoBtn.id=`add-todo-to-${name}`;
+        todoBtn.textContent="Add todo";
+
+        projectContainer.append(todoBtn);
         mainContainer.appendChild(projectContainer);
         return(name);
         
@@ -36,7 +40,35 @@ const CreateProject= (name) => {
     
 };
 
+const deleteProject = () => {
+    const SidebarProjectsContainer = document.querySelectorAll(".projects > div > img");
+
+
+   
+    SidebarProjectsContainer.forEach((elem) => {
+        elem.addEventListener("click", () => {
+            const projectClassName = elem.parentNode.className;
+            console.log(`Attempting to delete project: ${projectClassName}`);
+
+            const projectContainer = document.querySelector(`.main-container .${projectClassName}`);
+            console.log(projectContainer);
+
+            if (projectContainer) {
+                projectContainer.remove();
+                console.log(`Removed project container: ${projectClassName}`);
+            } else {
+                console.warn(`Project container for ${projectClassName} not found.`);
+            }
+
+            elem.parentNode.remove();
+            console.log(`Removed sidebar element: ${projectClassName}`);
+        });
+    });
+};
 
 
 
-export {CreateProject};
+
+
+
+export {CreateProject,deleteProject};
