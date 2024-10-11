@@ -2,7 +2,7 @@ import closeImg from './img/window-close.svg';
 
 
 const CreateProject= (name) => {
-    const projectSidebar=document.querySelector(".projects");
+    const projectSidebar=document.querySelector(".sidebar-projects");
     const mainContainer=document.querySelector(".main-container");
 
     
@@ -23,7 +23,8 @@ const CreateProject= (name) => {
         projectSidebar.appendChild(projectDivSidebar);
         
         const projectContainer=document.createElement("div");
-        projectContainer.className=name;
+        projectContainer.className="project";
+        projectContainer.id=name;
         
         // const todoContainer=document.createElement("div");
         // todoContainer.className=`todo-${name}`;
@@ -32,7 +33,10 @@ const CreateProject= (name) => {
         todoBtn.id=`add-todo-to-${name}`;
         todoBtn.textContent="Add todo";
 
-        projectContainer.append(todoBtn);
+        const allTodosContainer=document.createElement("div");
+        allTodosContainer.className=`todos-${name}`;
+
+        projectContainer.append(todoBtn,allTodosContainer);
         mainContainer.appendChild(projectContainer);
         return(name);
         
@@ -41,7 +45,7 @@ const CreateProject= (name) => {
 };
 
 const deleteProject = () => {
-    const SidebarProjectsContainer = document.querySelectorAll(".projects > div > img");
+    const SidebarProjectsContainer = document.querySelectorAll(".sidebar-projects > div > img");
 
 
    
@@ -50,7 +54,7 @@ const deleteProject = () => {
             const projectClassName = elem.parentNode.className;
             console.log(`Attempting to delete project: ${projectClassName}`);
 
-            const projectContainer = document.querySelector(`.main-container .${projectClassName}`);
+            const projectContainer = document.querySelector(`.main-container #${projectClassName}`);
             console.log(projectContainer);
 
             if (projectContainer) {

@@ -35,12 +35,12 @@
  
 
 }
-.container .sidebar .title {
+.container .sidebar .sidebar-title {
   justify-self: center;
   align-self: center;
 }
 
-.container .sidebar .project-menu {
+.container .sidebar .sidebar-project-menu {
   display: flex;
   flex-direction: column;
   
@@ -52,12 +52,12 @@
   align-items: center;
  
 }
-.container .sidebar .project-menu .projects {
+.container .sidebar .sidebar-project-menu .sidebar-projects {
   display: grid;
   gap: 20px;
 
 }
-.container .sidebar .project-menu .projects div {
+.container .sidebar .sidebar-project-menu .sidebar-projects div {
   width: 100%;
   display: grid;
   gap: 10px;
@@ -66,7 +66,7 @@
   grid-template-columns: 4fr 1fr;
 }
 
-.container .sidebar .project-menu .projects button {
+.container .sidebar .sidebar-project-menu .sidebar-projects button {
   grid-column: 1;
   background-color: rgb(0, 103, 199);
   border: none;
@@ -81,11 +81,11 @@
  
   
 }
-.container .sidebar .project-menu .projects img {
+.container .sidebar .sidebar-project-menu .sidebar-projects img {
   width: 2em;
 }
 
-.container .sidebar #create-button,
+.container .sidebar #sidebar-create-project-button,
 .container .main-container > div button,
 .container .main-container > div input[type="submit"]
  {
@@ -116,7 +116,7 @@
   
   display: none;
   grid-template-rows: 1fr 10fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; 
   background-color: aquamarine;
   border-radius: 20px;
   padding: 30px;
@@ -125,22 +125,25 @@
 .container .main-container > div h3 {
   
   grid-row: 1;
+  grid-column: 1/2;
 }
 
 
 .container .main-container > div >div {
   
-    display: grid;
-    grid-template-columns: repeat(3,calc(100%/3));
-    grid-template-rows: repeat(2,calc(100%/2));
-    gap: 20px;
-    /* visibility: hidden; */
-    grid-row: 2;
-    grid-column: 1/-1;
+  
+  grid-row: 2;
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(3,calc(100%/3));
+  gap: 20px;
+    
     
 }
 .container .main-container > div button {
   background-color: coral;
+  grid-row: 1;
+  grid-column: 2;
 
 
 }

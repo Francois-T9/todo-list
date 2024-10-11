@@ -13,18 +13,32 @@ DisplayProjectName(CreateProject("Default")); //creates a default project with t
 
 deleteProject();
 
+let projectIdArray=["Default"];
+
 const handleClick=(() => { //creates a project in the DOM and display it
-    const createProjectButton=document.querySelector("#create-button");
+    const createProjectButton=document.querySelector("#sidebar-create-project-button");
     createProjectButton.addEventListener("click", () => {
-        CreateProject(getProjectName());
+        projectIdArray.push((CreateProject(getProjectName())));
         deleteProject();
         DisplayProjectName();
+
+        projectIdArray.forEach((projectId) => {
+            console.log(projectId);
+            let addTodoButtons=document.querySelector(`.main-container .project #add-todo-to-${projectId}`);
+            addTodoButtons.addEventListener("click",() => {
+                console.log(`clicked ${projectId} button`)
+                createTodo(`${projectId}`);
+            })
+            console.log(addTodoButtons);
+            
+        })
     })
 })();
 
 
 
-document.querySelector(".main-container div button").addEventListener("click",() => {
+
+document.querySelector(".main-container .project button").addEventListener("click",() => {
     console.log("todo added to project defaults")
     createTodo("Default");
 });

@@ -1,6 +1,6 @@
 const createTodo= (projectName) => {
     
-    const projectContainer=document.querySelector(`.main-container .${projectName}`);
+    const projectContainer=document.querySelector(`.main-container #${projectName} .todos-${projectName}`);
 
     const todoForm=document.createElement("form");
     const submitButton=document.createElement("input");
@@ -13,8 +13,11 @@ const createTodo= (projectName) => {
     const titleLabel=document.createElement("label");
     const todoTitle=document.createElement("input");
 
-    // const todoContainer=document.createElement("div");
-    // todoContainer.id=
+    const todoContainer=document.createElement("div");
+    todoContainer.className=`${projectName}`;
+    todoContainer.id=prompt("Name of the todo ?");
+    
+
 
 
     todoTitle.id="todo-title";
@@ -46,7 +49,11 @@ const createTodo= (projectName) => {
 
     todoForm.append(titleLabel,todoTitle,descriptionLabel,todoDescription,dateLabel,todoDueDate,priorityLabel,todoPriority,submitButton);
 
-    projectContainer.appendChild(todoForm);
+    todoContainer.appendChild(todoForm);
+
+
+
+    projectContainer.appendChild(todoContainer);
     
 
     

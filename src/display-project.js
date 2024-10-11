@@ -1,6 +1,6 @@
 const DisplayProjectName=(name) => {
     const headerTitle=document.querySelector(".header h1");
-    const SidebarprojectsContainer=document.querySelectorAll(".projects button")
+    const SidebarprojectsContainer=document.querySelectorAll(".sidebar-projects button")
     // const mainContainerTitle=document.querySelector(".project-presentation p");
     
     
@@ -8,10 +8,10 @@ const DisplayProjectName=(name) => {
     
     SidebarprojectsContainer.forEach((elem) => {  //when the sidebar button of the project is click, DOM should be added to mainContainer
         elem.addEventListener("click",() => {
-            document.querySelectorAll('.main-container > div').forEach(div => {
+            document.querySelectorAll('.main-container .project').forEach(div => {
                 div.style.display = 'none'; 
             });
-            let projectMainContainer = document.querySelector(`.main-container .${elem.id}`);
+            let projectMainContainer = document.querySelector(`.main-container #${elem.id}`);
            
 
             let containerTitleText = projectMainContainer.querySelector('h3');
@@ -25,7 +25,6 @@ const DisplayProjectName=(name) => {
 
             projectMainContainer.style.display = 'grid'; // Set display to 'grid' to show it
             projectMainContainer.style.visibility="visible"
-            console.log(projectMainContainer.style.visibility);
             
             headerTitle.textContent = `Project : ${elem.id}`;
             
