@@ -1,13 +1,24 @@
 const createTodo= (projectName) => {
     
     const projectContainer=document.querySelector(`.main-container #${projectName} .todos-${projectName}`);
+    
+    let todoInputName=prompt("Name of the todo ?");
+
+    while (todoInputName===null) {
+        todoInputName=prompt("Enter a valid name");
+
+    }
 
     const todoForm=document.createElement("form");
     const submitButton=document.createElement("input");
     const deleteButton=document.createElement("input");
     submitButton.setAttribute("type","submit");
+    submitButton.id=`submit-${todoInputName}-to-${projectName}`;
 
-
+    submitButton.addEventListener("click",(event)=> {
+        event.preventDefault();
+        console.log(`${todoInputName}-submited-to-${projectName}`)
+    })
 
 
     const titleLabel=document.createElement("label");
@@ -15,12 +26,13 @@ const createTodo= (projectName) => {
 
     const todoContainer=document.createElement("div");
     todoContainer.className=`${projectName}`;
-    todoContainer.id=prompt("Name of the todo ?");
+    todoContainer.id=todoInputName;
     
 
 
 
     todoTitle.id="todo-title";
+    todoTitle.value=todoInputName;
     titleLabel.htmlFor="todo-title";
     titleLabel.textContent="Todo name";
 

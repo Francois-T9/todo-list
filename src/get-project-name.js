@@ -2,9 +2,12 @@ const getProjectName= () => {
     
     let projectName;
     projectName=prompt("Name of the project : ")
-
-
-    return(projectName);
+    while(projectName===null) {
+        projectName=prompt("Project name cant be empty ")
+    }
+    
+        return(projectName);
+    
     
     
 };

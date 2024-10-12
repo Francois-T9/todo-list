@@ -34,7 +34,10 @@ const CreateProject= (name) => {
         todoBtn.textContent="Add todo";
 
         const allTodosContainer=document.createElement("div");
-        allTodosContainer.className=`todos-${name}`;
+        allTodosContainer.className=`todos`;
+        allTodosContainer.id=`todos-${name}`;
+
+       
 
         projectContainer.append(todoBtn,allTodosContainer);
         mainContainer.appendChild(projectContainer);
