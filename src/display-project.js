@@ -33,6 +33,7 @@ const DisplayProjectName=(name) => {
         )
         
     })
+    return(name);
 }
 
 export  { DisplayProjectName} ;

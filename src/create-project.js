@@ -30,12 +30,13 @@ const CreateProject= (name) => {
         // todoContainer.className=`todo-${name}`;
 
         const todoBtn=document.createElement("button");
+        todoBtn.className=`add-todo`;
         todoBtn.id=`add-todo-to-${name}`;
         todoBtn.textContent="Add todo";
 
         const allTodosContainer=document.createElement("div");
-        allTodosContainer.className=`todos`;
-        allTodosContainer.id=`todos-${name}`;
+        allTodosContainer.className=`todo-form-container`;
+        allTodosContainer.id=`todo-form-project-${name}`;
 
        
 

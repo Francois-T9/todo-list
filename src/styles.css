@@ -115,11 +115,12 @@
 .container .main-container .project {
   
   display: none;
-  grid-template-rows: 1fr 10fr;
+  grid-template-rows: 1fr 3fr 3fr;
   grid-template-columns: 1fr 1fr; 
   background-color: aquamarine;
   border-radius: 20px;
   padding: 30px;
+  gap: 20px;
 }
 
 .container .main-container .project h3 {
@@ -136,7 +137,7 @@
 
 
 }
-.container .main-container .project .todos {
+.container .main-container .project .todo-form-container {
   
   
   grid-row: 2;
@@ -159,7 +160,7 @@
     
     
 }
-.container .main-container .project .todos.active {
+.container .main-container .project .todo-form-container.active {
   
   transform: translate(-50%,-50%)scale(1);
        
@@ -189,7 +190,7 @@
 
 }
 
-.container .main-container .project .todo-form {
+.container .main-container .project .todo-form-container {
  padding: 10px 15px;
 }
 
@@ -213,11 +214,64 @@
   background-color: rgb(0, 58, 0);
 }
 
-.container .main-container .project .todos form  {
-  background-color: bisque;
+.container .main-container .project .todo-form-container form  {
+  background-color: inherit;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  
+}
+
+.container .main-container .project .todo-form-container form input:focus {
+  background-color: #f0f0f0;
+  border: solid #89ddff;
+}
+
+
+.container .main-container .project .todo-form-container form input,
+input:placeholder-shown {
+    border: solid #E5E7EB 1px; /* Default gray border */
+    /* height: 25px;
+    width: 250px; */
+    border-radius: 5px;
+    padding-left: 15px;
+} 
+
+.container .main-container .project .todo-form-container form input:invalid:not(:placeholder-shown) {
+  border: 1px solid red;
+}
+
+.container .main-container .project .todo-form-container form input:valid {
+  border: solid green 2px;
+} 
+
+
+
+/* todos-display container styling */
+
+.main-container .project .todo-display {
+  background-color: bisque;
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  justify-items: center;
+  align-items: flex-start;
+}
+.main-container .project .todo-display h1,
+.main-container .project .todo-display p {
+  grid-column: 1;
+}
+
+.main-container .project .todo-display img {
+  grid-row: 1;
+  grid-column: 2;
+  width: 30px;
+
+}
+
+.main-container .project .todo-display img:hover {
+  cursor: pointer;
 }
