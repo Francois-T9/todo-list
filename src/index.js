@@ -7,7 +7,6 @@ import { compareAsc, format } from "date-fns";
 import "./styles.css";
 
 
-
 DisplayProjectName(CreateProject("Default")); //creates a default project with the name "Default"
 
 

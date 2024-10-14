@@ -20,6 +20,18 @@ const displayTodo= (projectName,todoObject) => {
     const todoPriorityContainer=document.createElement("p");
     todoPriorityContainer.textContent=todoObject.priority;
 
+
+    if(todoPriorityContainer.textContent=="Low") {
+        todoPriorityContainer.style.color="green"
+    }
+    else if(todoPriorityContainer.textContent=="Medium")
+    {
+        todoPriorityContainer.style.color="orange"
+    }
+    else if(todoPriorityContainer.textContent=="High") {
+        todoPriorityContainer.style.color="red"
+    }
+
     const removeTodoButton=document.createElement("img");
     removeTodoButton.src=closeImg;
 
