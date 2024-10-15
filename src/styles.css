@@ -166,7 +166,7 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-
+/* 
 .container .main-container .project .todo-form-container .todo-form #todo-priorities {
   display: flex;
   justify-content: center;
@@ -174,11 +174,12 @@
 
 .container .main-container .project .todo-form-container .todo-form #todo-priorities input[type="radio"] {
   accent-color: #232323;
-}
+} */
 
 .container .main-container .project .todo-form-container .todo-form input {
   width: 10em;
 }
+
 .container .main-container .project .todo-form-container.active {
   
   transform: translate(-50%,-50%)scale(1);

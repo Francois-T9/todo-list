@@ -34,6 +34,8 @@ const CreateProject= (name) => {
         todoBtn.id=`add-todo-to-${name}`;
         todoBtn.textContent="Add todo";
 
+        // create a form container per project name
+
         const allTodosContainer=document.createElement("div");
         allTodosContainer.className=`todo-form-container`;
         allTodosContainer.id=`todo-form-project-${name}`;

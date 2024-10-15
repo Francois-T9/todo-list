@@ -10,6 +10,7 @@ const formPopup=(projectName)  => {
     {return{name,description,date,priority};
         };
 
+        
 
     const todoFormContainer=document.querySelector(`.main-container #${projectName} #todo-form-project-${projectName}`);
 
@@ -42,7 +43,7 @@ const formPopup=(projectName)  => {
     submitFormButton.id=`submit-todo-to-${projectName}`;
 
     const empty = () => {
-        let form = document.querySelector(".todo-form");
+        let form = document.querySelector(`#${projectName}-todo-form`);
         let inputFields = form.querySelectorAll("input");
     
         for (let input of inputFields) {
@@ -105,6 +106,13 @@ const formPopup=(projectName)  => {
     dateFormLabel.htmlFor="todo-due-date";
     dateFormLabel.textContent="Due date";
 
+    // const priorityFormLabel=document.createElement("label");
+    // const priorityForm=document.createElement("input");
+    // priorityForm.required=true;
+    // priorityForm.id="todo-priority";
+    // priorityFormLabel.htmlFor="todo-priority";
+    // priorityFormLabel.textContent="Priority";
+
     const priorityChoice={
         "Low":false,
         "Medium":false,
@@ -117,7 +125,7 @@ const formPopup=(projectName)  => {
     const priorityForm=document.createElement("div");
     priorityForm.id="todo-priorities";
     priorityForm.required=true;
-    priorityFormLabel.htmlFor="todo-priority";
+    // priorityFormLabel.htmlFor="todo-priorities";
     priorityFormLabel.textContent="Priority";
 
     for(let key in priorityChoice){
