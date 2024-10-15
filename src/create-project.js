@@ -1,6 +1,5 @@
 import closeImg from './img/window-close.svg';
 
-//try to add constructor or classes to moake the code cleaner
 
 const CreateProject= (name) => {
     const projectSidebar=document.querySelector(".sidebar-projects");
@@ -11,52 +10,93 @@ const CreateProject= (name) => {
         
     }
     else {
-        const projectDivSidebar=document.createElement("div");
-        projectDivSidebar.className=`${name}`;
+        //  creates a project and adds it to the sidebar container
+        const AddProjectToSidebar=(projectName,sidebarContainer) => {
+
+            // function that create a container with the name of the project
+            const CreateSidebarProjectContainer=(() => {
+    
+                const projectDivSidebar=document.createElement("div");
+                projectDivSidebar.className=`${projectName}`;
+    
+                return projectDivSidebar;
+                
+            })();
+    
+            // inside the project container of the sidebar, we have a button to display the project, and a button to delete the project
+            const AddButtonsToSidebarProjectContainer=(sidebarProjectContainer,closeButtonImage) => {
+                const projectSelector=document.createElement("button");
+                const closeButton=document.createElement("img");
+                
+                projectSelector.id=sidebarProjectContainer.className;            // to be chosen by user
+                projectSelector.textContent=sidebarProjectContainer.className;    // to be chosen by user
+                
+                closeButton.src=closeButtonImage;
+                sidebarProjectContainer.append(projectSelector,closeButton);
+                sidebarContainer.appendChild(projectDivSidebar);
+                
+            };
+            
+            //function calls 
+            let projectDivSidebar=CreateSidebarProjectContainer;
+    
+            AddButtonsToSidebarProjectContainer(projectDivSidebar,closeImg);
+        }
         
-        const projectSelector=document.createElement("button");
+        //  creates a project, defines a common class for projects in main, with an id for each project
+        const AddProjectToMainContainer=(projectName,mainContainer) => {
+
+            const CreateMainProjectContainer=(projectName) => {
+                
+                const projectContainer=document.createElement("div");
+                projectContainer.className="project";
+                projectContainer.id=projectName;
+                
+                return projectContainer;
+                
+                
+            }
+            //inside each main project container, we add a addTodo button, a paragraph and a form container
+            const AddItemsToMainProjectContainer=(projectContainer,mainContainer) => {
+                
+                const todoBtn=document.createElement("button");
+                const allTodosContainer=document.createElement("div");
+                //create addTodo button
+                todoBtn.className=`add-todo`;
+                todoBtn.id=`add-todo-to-${projectContainer.id}`;
+                todoBtn.textContent="Add todo";
+                //create form container
+                allTodosContainer.className=`todo-form-container`;
+                allTodosContainer.id=`todo-form-project-${name}`;
+                
+                
+                
+                projectContainer.append(todoBtn,allTodosContainer);
+                mainContainer.appendChild(projectContainer);
+                
+                
+            }
+            
+            
+            const projectMainContainer=CreateMainProjectContainer(projectName);
+            AddItemsToMainProjectContainer(projectMainContainer,mainContainer);
+        }
         
-        projectSelector.id=`${name}`;            // to be chosen by user
-        projectSelector.textContent=`${name}`;      // to be chosen by user
-        const closeButton=document.createElement("img");
-        closeButton.src=closeImg;
-        projectDivSidebar.append(projectSelector,closeButton);
-        projectSidebar.appendChild(projectDivSidebar);
-        
-        const projectContainer=document.createElement("div");
-        projectContainer.className="project";
-        projectContainer.id=name;
-        
-        // const todoContainer=document.createElement("div");
-        // todoContainer.className=`todo-${name}`;
-
-        const todoBtn=document.createElement("button");
-        todoBtn.className=`add-todo`;
-        todoBtn.id=`add-todo-to-${name}`;
-        todoBtn.textContent="Add todo";
-
-        // create a form container per project name
-
-        const allTodosContainer=document.createElement("div");
-        allTodosContainer.className=`todo-form-container`;
-        allTodosContainer.id=`todo-form-project-${name}`;
-
-       
-
-        projectContainer.append(todoBtn,allTodosContainer);
-        mainContainer.appendChild(projectContainer);
-        return(name);
+        // function calls
+        AddProjectToSidebar(name,projectSidebar);  
+        AddProjectToMainContainer(name,mainContainer); 
         
     }
     
 };
 
+
 const deleteProject = () => {
-    const SidebarProjectsContainer = document.querySelectorAll(".sidebar-projects > div > img");
+    const sidebarDeleteProjectButton = document.querySelectorAll(".sidebar-projects > div > img");
 
 
    
-    SidebarProjectsContainer.forEach((elem) => {
+    sidebarDeleteProjectButton.forEach((elem) => {
         elem.addEventListener("click", () => {
             const projectClassName = elem.parentNode.className;
             console.log(`Attempting to delete project: ${projectClassName}`);
@@ -76,10 +116,5 @@ const deleteProject = () => {
         });
     });
 };
-
-
-
-
-
 
 export {CreateProject,deleteProject};

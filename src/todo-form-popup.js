@@ -1,47 +1,83 @@
 import { displayTodo } from "./display-todo";
 
+const formPopup=(name)  => {
+
+    //global variables (avoid them if posible)
+
+    let projectName=name;
+    const todoFormContainer=document.querySelector(`.main-container #${projectName} #todo-form-project-${projectName}`);
+
+    const todoFormSelector=document.querySelector(`.main-container #${projectName} .todo-form-container`);
+    const overlay=document.querySelector("#overlay");
 
 
-const formPopup=(projectName)  => {
     // create todo object
-    
     const createTodo=(name,description,date,priority) => 
     
     {return{name,description,date,priority};
         };
 
+    // form header
+    
+
+
+    // create the header and the form content
+    const PopulateFormContainer=(projectName) => {
+            
+            
+        const CreateFormHeader=(() => {
+                
+                
+            const todoFormHeader=document.createElement("div");
+            todoFormHeader.className=`todo-header`;
+            todoFormHeader.id=`${projectName}-todo-header`;
+            
+            const todoFormHeaderTitle=document.createElement("div");
+            todoFormHeaderTitle.className=`todo-title`;
+            todoFormHeaderTitle.id=`${projectName}-todo-title`;
+                
+            todoFormHeaderTitle.textContent=`Add todo to ${projectName}`;
+                
+            const closeFormButton=document.createElement('button');
+            closeFormButton.className=`close-button`;
+            closeFormButton.id=`${projectName}-close-button`;
+            closeFormButton.textContent=`X`;
+                
+            todoFormHeader.append(todoFormHeaderTitle,closeFormButton);
+
+            return todoFormHeader;
+
+        })();
+
         
+        const CreateTodoForm=(() => {
+            
+            const todoForm=document.createElement("form");
+            todoForm.className=`todo-form`;
+            todoForm.id=`${projectName}-todo-form`;
+            todoForm.setAttribute("name","todoForm");
+            
+            return todoForm;
+            
+        })();
+        
+        //function calls
+        const formHeader=CreateFormHeader;
+        const todoForm=CreateTodoForm;
 
-    const todoFormContainer=document.querySelector(`.main-container #${projectName} #todo-form-project-${projectName}`);
 
-    const todoFormHeader=document.createElement("div");
-    todoFormHeader.className=`todo-header`;
-    todoFormHeader.id=`${projectName}-todo-header`;
 
-    const todoFormHeaderTitle=document.createElement("div");
-    todoFormHeaderTitle.className=`todo-title`;
-    todoFormHeaderTitle.id=`${projectName}-todo-title`;
+        return {formHeader,
+            todoForm
+        };
+    };
+    
+    // function calls
 
-    todoFormHeaderTitle.textContent=`Add todo to ${projectName}`;
+    const todoFormHeader=PopulateFormContainer(name).formHeader;
+    const todoForm=PopulateFormContainer(name).todoForm
 
-    const closeFormButton=document.createElement('button');
-    closeFormButton.className=`close-button`;
-    closeFormButton.id=`${projectName}-close-button`;
-    closeFormButton.textContent=`X`;
-
-    todoFormHeader.append(todoFormHeaderTitle,closeFormButton);
-
-    const todoForm=document.createElement("form");
-    todoForm.className=`todo-form`;
-    todoForm.id=`${projectName}-todo-form`;
-    todoForm.setAttribute("name","todoForm");
-
-    // elements of the todo form 
-
-    const submitFormButton=document.createElement("input");
-    submitFormButton.setAttribute("type","submit");
-    submitFormButton.id=`submit-todo-to-${projectName}`;
-
+    // checks if the required inputs of the form are empty or not
     const empty = () => {
         let form = document.querySelector(`#${projectName}-todo-form`);
         let inputFields = form.querySelectorAll("input");
@@ -56,7 +92,126 @@ const formPopup=(projectName)  => {
         }
         return true;
     };
+
+            
+    // adds all input to the form content + submit button (returns it in order to add event listener)
+
+    const AddInputsToForm=(form) => {
+        let projectName=form.id.split("-")[0];
+
+        const submitFormButton=document.createElement("input");
+        submitFormButton.setAttribute("type","submit");
+        submitFormButton.id=`submit-todo-to-${projectName}`;
     
+        //title
+        const titleFormLabel=document.createElement("label");
+        const todoFormTitle=document.createElement("input");
+        todoFormTitle.minLength=3;
+        todoFormTitle.required=true;
+        todoFormTitle.id="todo-form-title";
+        titleFormLabel.htmlFor="todo-form-title";
+        titleFormLabel.textContent="Todo name";
+        
+        //descritpion (optional)
+        const descriptionFormLabel=document.createElement("label");
+        const todoFormDescription=document.createElement("input");
+        todoFormDescription.id="todo-description";
+        descriptionFormLabel.htmlFor="todo-description";
+        descriptionFormLabel.textContent="Description";
+    
+        //date
+        const dateFormLabel=document.createElement("label");
+        const todoFormDate=document.createElement("input");
+        todoFormDate.setAttribute("type","date");
+        todoFormDate.required=true;
+        todoFormDate.id="todo-due-date";
+        dateFormLabel.htmlFor="todo-due-date";
+        dateFormLabel.textContent="Due date";
+    
+     
+        //priority
+        
+
+        const priorityFormLabel=document.createElement("label");
+        priorityFormLabel.textContent="Priority";
+
+        
+
+        const todoFormPriority=document.createElement("input");
+        todoFormPriority.setAttribute("type","text");
+        todoFormPriority.setAttribute("list","priorities")
+        todoFormPriority.required=true;
+        todoFormPriority.id="todo-priority";
+        
+    
+    
+        
+        // append all elements to todo form
+    
+        form.append(titleFormLabel,todoFormTitle,descriptionFormLabel,todoFormDescription,dateFormLabel,todoFormDate,priorityFormLabel,todoFormPriority,submitFormButton);
+    
+        
+        //  append todo form to todos container
+    
+        todoFormContainer.append(todoFormHeader,form);
+        return {todoFormTitle,
+            todoFormDescription,
+            todoFormDate,
+            todoFormPriority,
+            submitFormButton
+            };
+
+    }
+
+    // function call
+    const formOutput=AddInputsToForm(todoForm);
+
+    //
+
+    
+    
+    //  handles the popup of the form
+    
+    
+    
+    
+    const PopTodoForm=(todoContainer) => {
+        const addTodoButton=document.querySelector(`.main-container #${projectName} #add-todo-to-${projectName}`);
+        
+        addTodoButton.addEventListener("click",() =>{
+            toggleAddTodo(todoContainer)  //should take the form class
+            
+        })
+        
+        function toggleAddTodo(todo) {
+            if(todo==null) return
+            todo.classList.add("active")
+            overlay.classList.add('active');
+        }
+    };
+    
+    function removeTodoPopup(todo) {
+        if(todo==null) return
+        todo.classList.remove("active")
+        overlay.classList.remove('active');
+    }
+    const DepopTodoForm=(todoContainer)=> {
+        const closeTodo=document.querySelector(`#${projectName}-close-button`);
+        closeTodo.addEventListener("click",() =>{
+            removeTodoPopup(todoContainer)  //should take the form class
+        }
+    )
+    
+    //
+    
+    
+    
+    
+    };
+
+    const SubmitForm=(form) => {
+
+    const submitFormButton=form.submitFormButton;
     
 
     submitFormButton.addEventListener("click",(event)=> {
@@ -64,128 +219,29 @@ const formPopup=(projectName)  => {
         if (!empty()) {
             return; // Stop if the empty function returns false
         }
-        console.log(`todo-submited-to-${projectName}`);
         
-        let getTodo=createTodo(todoFormTitle.value,todoFormDescription.value,todoFormDate.value,
-            document.querySelector('input[name="priority-choice"]:checked').value);
+        let getTodo=createTodo(form.todoFormTitle.value,form.todoFormDescription.value,form.todoFormDate.value,form.todoFormPriority.value);
         
         displayTodo(projectName,getTodo);
 
         removeTodoPopup(todoFormSelector)  //should take the form class
-        console.log(getTodo);
 
         
        
 
     })
-
-
-    // todo form creation in the DOM
-
-    const titleFormLabel=document.createElement("label");
-    const todoFormTitle=document.createElement("input");
-    todoFormTitle.minLength=3;
-    todoFormTitle.required=true;
-    todoFormTitle.id="todo-form-title";
-    titleFormLabel.htmlFor="todo-form-title";
-    titleFormLabel.textContent="Todo name";
-    
-
-    const descriptionFormLabel=document.createElement("label");
-    const todoFormDescription=document.createElement("input");
-    todoFormDescription.id="todo-description";
-    descriptionFormLabel.htmlFor="todo-description";
-    descriptionFormLabel.textContent="Description";
-
-
-    const dateFormLabel=document.createElement("label");
-    const todoFormDate=document.createElement("input");
-    todoFormDate.setAttribute("type","date");
-    todoFormDate.required=true;
-    todoFormDate.id="todo-due-date";
-    dateFormLabel.htmlFor="todo-due-date";
-    dateFormLabel.textContent="Due date";
-
-    // const priorityFormLabel=document.createElement("label");
-    // const priorityForm=document.createElement("input");
-    // priorityForm.required=true;
-    // priorityForm.id="todo-priority";
-    // priorityFormLabel.htmlFor="todo-priority";
-    // priorityFormLabel.textContent="Priority";
-
-    const priorityChoice={
-        "Low":false,
-        "Medium":false,
-        "High":false
     };
 
-    
+//function call
 
-    const priorityFormLabel=document.createElement("label");
-    const priorityForm=document.createElement("div");
-    priorityForm.id="todo-priorities";
-    priorityForm.required=true;
-    // priorityFormLabel.htmlFor="todo-priorities";
-    priorityFormLabel.textContent="Priority";
-
-    for(let key in priorityChoice){
-        let label=document.createElement("label");
-        let input=document.createElement("input");
-        input.type="radio",
-        input.value=key;
-        input.name="priority-choice"
-        label.innerText=key;
-        label.appendChild(input)
-        priorityForm.appendChild(label)
-    }
-
-
-    
-    // append all elements to todo form
-
-    todoForm.append(titleFormLabel,todoFormTitle,descriptionFormLabel,todoFormDescription,dateFormLabel,todoFormDate,priorityFormLabel,priorityForm,submitFormButton);
-
-
-    //  append todo form to todos container
-
-    todoFormContainer.append(todoFormHeader,todoForm);
+PopTodoForm(todoFormSelector);
+DepopTodoForm(todoFormSelector);
+SubmitForm(formOutput);
 
 
 
 
-    //  handles the popup of the form
 
-
-    const addTodoButton=document.querySelector(`.main-container #${projectName} #add-todo-to-${projectName}`);
-    const closeTodo=document.querySelector(`#${projectName}-close-button`);
-    
-    const overlay=document.querySelector("#overlay");
-    const todoFormSelector=document.querySelector(`.main-container #${projectName} .todo-form-container`);
-
-    addTodoButton.addEventListener("click",() =>{
-        toggleAddTodo(todoFormSelector)  //should take the form class
-        
-    }
-    )
-
-    closeTodo.addEventListener("click",() =>{
-        removeTodoPopup(todoFormSelector)  //should take the form class
-    }
-    )
-
-    function toggleAddTodo(todo) {
-        if(todo==null) return
-        todo.classList.add("active")
-        overlay.classList.add('active');
-    }
-
-    function removeTodoPopup(todo) {
-        if(todo==null) return
-        todo.classList.remove("active")
-        overlay.classList.remove('active');
-    }
-
-   
 };
 
 export {formPopup};
