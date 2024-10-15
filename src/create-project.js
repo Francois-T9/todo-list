@@ -1,5 +1,6 @@
 import closeImg from './img/window-close.svg';
 
+//try to add constructor or classes to moake the code cleaner
 
 const CreateProject= (name) => {
     const projectSidebar=document.querySelector(".sidebar-projects");
