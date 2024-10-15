@@ -130,26 +130,38 @@ const formPopup=(name)  => {
     
      
         //priority
-        
+            //manual input method
 
-        const priorityFormLabel=document.createElement("label");
-        priorityFormLabel.textContent="Priority";
+        // const priorityFormLabel=document.createElement("label");
+        // priorityFormLabel.textContent="Priority";
 
-        
+        // const todoFormPriority=document.createElement("input");
+        // todoFormPriority.required=true;
+        // todoFormPriority.id="todo-priority";
 
-        const todoFormPriority=document.createElement("input");
-        todoFormPriority.setAttribute("type","text");
-        todoFormPriority.setAttribute("list","priorities")
-        todoFormPriority.required=true;
-        todoFormPriority.id="todo-priority";
+            //radio button method
+        const priorities = ["Low", "Medium", "High"];
+        const prioritiesContainer = document.createElement("div");
+        prioritiesContainer.className = "priorities-container";
         
-    
-    
+        priorities.forEach((priority) => {
+            const priorityFormLabel = document.createElement("label");
+            priorityFormLabel.htmlFor = `form-priority-${priority}`;
+            priorityFormLabel.innerHTML = priority;
+            const priorityForm = document.createElement("input");
+            
+            priorityForm.setAttribute("type", "radio");
+            priorityForm.name = `priority-${projectName}`; // Make sure all radio buttons have the same name
+            priorityForm.value = priority;
+            priorityForm.id = `form-priority-${priority}`;
         
-        // append all elements to todo form
-    
-        form.append(titleFormLabel,todoFormTitle,descriptionFormLabel,todoFormDescription,dateFormLabel,todoFormDate,priorityFormLabel,todoFormPriority,submitFormButton);
-    
+            // Append the input and label directly to the container
+            prioritiesContainer.append( priorityFormLabel,priorityForm);
+        });
+        
+        // Append all elements to the todo form
+        form.append(titleFormLabel, todoFormTitle, descriptionFormLabel, todoFormDescription, dateFormLabel, todoFormDate, prioritiesContainer, submitFormButton);
+        
         
         //  append todo form to todos container
     
@@ -157,7 +169,7 @@ const formPopup=(name)  => {
         return {todoFormTitle,
             todoFormDescription,
             todoFormDate,
-            todoFormPriority,
+            prioritiesContainer,
             submitFormButton
             };
 
@@ -209,6 +221,14 @@ const formPopup=(name)  => {
     
     };
 
+    const ResetForm=(form) => {
+        form.todoFormTitle.value="";
+        form.todoFormDescription.value="";
+        form.todoFormDate.value="";
+        document.querySelector(`input[name=priority-${projectName}]:checked`).value="";
+        // form.todoFormPriority.value="";
+    }
+
     const SubmitForm=(form) => {
 
     const submitFormButton=form.submitFormButton;
@@ -219,11 +239,11 @@ const formPopup=(name)  => {
         if (!empty()) {
             return; // Stop if the empty function returns false
         }
-        
-        let getTodo=createTodo(form.todoFormTitle.value,form.todoFormDescription.value,form.todoFormDate.value,form.todoFormPriority.value);
+        let getTodo=createTodo(form.todoFormTitle.value,form.todoFormDescription.value,form.todoFormDate.value, document.querySelector(`input[name=priority-${projectName}]:checked`).value);
         
         displayTodo(projectName,getTodo);
-
+        // create function to clear all input fields
+        ResetForm(form);
         removeTodoPopup(todoFormSelector)  //should take the form class
 
         

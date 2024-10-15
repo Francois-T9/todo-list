@@ -1,19 +1,35 @@
+:root {
+  --background-color: linear-gradient(to right, #9796f0, #fbc7d4);
+  --color-one: #96858F;
+  --color-two: #6D7993;
+  --color-three: #9099A2;
+  --color-four: #D5D5D5;
+  --color-five: #0E161B;
+
+
+}
+
 * {
   padding: 0;
   margin: 0;
   font-family: "Roboto";
+
+  
+  
 }
 .container {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 4fr;
   height: 100vh;
+
+  background-color: var(--background-color);
 }
 
 .container .header {
   grid-row: 1;
   grid-column: 1/-1;
-  background-color: black;
+  background-color: var(--color-five);
   display: grid;
   grid-template-columns: 1fr 4fr;
   align-items: center;
@@ -31,7 +47,7 @@
   grid-template-rows: 1fr 4fr;
   grid-row: 1/-1;
   grid-column: 1;
-  background-color: bisque;
+  background-color: var(--color-one);
  
 
 }
@@ -68,7 +84,7 @@
 
 .container .sidebar .sidebar-project-menu .sidebar-projects button {
   grid-column: 1;
-  background-color: rgb(0, 103, 199);
+  background-color: var(--color-two);
   border: none;
   color: white;
   font-weight: 700;
@@ -89,7 +105,7 @@
 .container .main-container > div button,
 .container .main-container > div input[type="submit"]
  {
-  background-color: rgb(21, 250, 174);
+  background-color: var(--color-four);
   border: none;
   color: white;
   font-weight: 700;
@@ -109,7 +125,7 @@
   padding: 20px;
   display: grid;
   /* grid-template-rows: 1fr 10fr; */
-  background-color: aliceblue;
+  background-color: var(--background-color);
 }
 
 .container .main-container .project {
@@ -117,7 +133,7 @@
   display: none;
   grid-template-rows: 1fr 3fr 3fr;
   grid-template-columns: 1fr 1fr; 
-  background-color: aquamarine;
+  background-color: var(--color-three);
   border-radius: 20px;
   padding: 30px;
   gap: 20px;
@@ -131,7 +147,7 @@
 
 
 .container .main-container .project button {
-  background-color: coral;
+  background-color: var(--color-one);
   grid-row: 1;
   grid-column: 2;
 
@@ -166,15 +182,15 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-/* 
-.container .main-container .project .todo-form-container .todo-form #todo-priorities {
+
+.container .main-container .project .todo-form-container .todo-form .priorities-container {
   display: flex;
   justify-content: center;
 }
 
-.container .main-container .project .todo-form-container .todo-form #todo-priorities input[type="radio"] {
+.container .main-container .project .todo-form-container .todo-form .priorities-container input[type="radio"] {
   accent-color: #232323;
-} */
+}
 
 .container .main-container .project .todo-form-container .todo-form input {
   width: 10em;
