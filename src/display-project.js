@@ -21,9 +21,26 @@ const DisplayProjectName=(name) => {
 
     };
 
+    const DisplayDefaultProject=(defaultProjectName) => {
+
+        const defaultProjectContainer=document.querySelector(`.main-container #${defaultProjectName}`);
+        defaultProjectContainer.style.display = 'grid'; // Set display to 'grid' to show it
+        defaultProjectContainer.style.visibility="visible";
+
+        UpdateMainContainerTitle(defaultProjectContainer.id,defaultProjectContainer);
+        UpdateHeaderTitle(defaultProjectContainer.id);
+
+    };
+
+    DisplayDefaultProject("Default");
+
+    
 
     const HandleClickSidebarProject=(() => {
-        const SidebarprojectsContainer=document.querySelectorAll(".sidebar-projects button")
+        const SidebarprojectsContainer=document.querySelectorAll(".sidebar-projects button");
+
+        // display Default project when loading the page
+
         
         SidebarprojectsContainer.forEach((elem) => {  //when the sidebar button of the project is click, DOM should be added to mainContainer
             elem.addEventListener("click",() => {

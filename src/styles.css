@@ -1,10 +1,14 @@
 :root {
-  --background-color: linear-gradient(to right, #9796f0, #fbc7d4);
   --color-one: #96858F;
   --color-two: #6D7993;
   --color-three: #9099A2;
   --color-four: #D5D5D5;
   --color-five: #0E161B;
+  
+  
+  --background-project: linear-gradient(#e66465, #9198e5);
+  --background-header:linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%);
+  --background-sidebar: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 
 
 }
@@ -12,7 +16,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Roboto";
+  font-family: "Agdasima", sans-serif;
 
   
   
@@ -23,18 +27,18 @@
   grid-template-rows: 1fr 4fr;
   height: 100vh;
 
-  background-color: var(--background-color);
+  
 }
 
 .container .header {
   grid-row: 1;
   grid-column: 1/-1;
-  background-color: var(--color-five);
+  /* background-color: var(--color-five); */
   display: grid;
   grid-template-columns: 1fr 4fr;
   align-items: center;
   padding: 20px;
-  
+  background: linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%);
 }
 
 .container .header h1 {
@@ -47,7 +51,7 @@
   grid-template-rows: 1fr 4fr;
   grid-row: 1/-1;
   grid-column: 1;
-  background-color: var(--color-one);
+  background:var(--background-sidebar);
  
 
 }
@@ -84,7 +88,7 @@
 
 .container .sidebar .sidebar-project-menu .sidebar-projects button {
   grid-column: 1;
-  background-color: var(--color-two);
+  background: var(--background-header);
   border: none;
   color: white;
   font-weight: 700;
@@ -94,18 +98,20 @@
   width: 8em;
   justify-self: center;
   height: 3em;
+  
  
   
 }
 .container .sidebar .sidebar-project-menu .sidebar-projects img {
   width: 2em;
+  cursor: pointer;
 }
 
 .container .sidebar #sidebar-create-project-button,
 .container .main-container > div button,
 .container .main-container > div input[type="submit"]
  {
-  background-color: var(--color-four);
+  background: var(--background-project);
   border: none;
   color: white;
   font-weight: 700;
@@ -117,6 +123,14 @@
   height: 3em;
   cursor: pointer;
 
+  transition: all .2s ease-in-out; 
+
+}
+
+.container .sidebar #sidebar-create-project-button:hover,
+.container .main-container > div button:hover
+ {
+  transform: scale(1.1);
 }
 
 .container .main-container {
@@ -133,10 +147,11 @@
   display: none;
   grid-template-rows: 1fr 3fr 3fr;
   grid-template-columns: 1fr 1fr; 
-  background-color: var(--color-three);
+  /* background-color: var(--color-three); */
   border-radius: 20px;
   padding: 30px;
   gap: 20px;
+  background: var(--background-project);
 }
 
 .container .main-container .project h3 {
@@ -147,7 +162,7 @@
 
 
 .container .main-container .project button {
-  background-color: var(--color-one);
+  background: var(--background-header);
   grid-row: 1;
   grid-column: 2;
 
@@ -289,18 +304,26 @@ input:placeholder-shown {
 /* todos-display container styling */
 
 .main-container .project .todo-display {
-  background-color: bisque;
+  background: var(--background-sidebar);
   border-radius: 20px;
   padding: 20px;
   display: grid;
   grid-template-columns: 3fr 1fr;
   justify-items: center;
   align-items: flex-start;
+  /* gap: 5px; */
 }
-.main-container .project .todo-display h1,
+.main-container .project .todo-display h1 ,
+.main-container .project .todo-display h4 ,
 .main-container .project .todo-display p {
   grid-column: 1;
 }
+
+.main-container .project .todo-display h1 {
+  grid-row: 1;
+}
+
+
 
 .main-container .project .todo-display img {
   grid-row: 1;
@@ -313,3 +336,15 @@ input:placeholder-shown {
   cursor: pointer;
 }
 
+/* footer */
+
+.footer {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer img {
+  width: 40px;
+}

@@ -106,6 +106,7 @@ const formPopup=(name)  => {
         //title
         const titleFormLabel=document.createElement("label");
         const todoFormTitle=document.createElement("input");
+        todoFormTitle.setAttribute("placeholder","Name of the task")
         todoFormTitle.minLength=3;
         todoFormTitle.required=true;
         todoFormTitle.id="todo-form-title";
@@ -115,6 +116,7 @@ const formPopup=(name)  => {
         //descritpion (optional)
         const descriptionFormLabel=document.createElement("label");
         const todoFormDescription=document.createElement("input");
+        todoFormDescription.setAttribute("placeholder","Task description (optional)")
         todoFormDescription.id="todo-description";
         descriptionFormLabel.htmlFor="todo-description";
         descriptionFormLabel.textContent="Description";
@@ -130,14 +132,7 @@ const formPopup=(name)  => {
     
      
         //priority
-            //manual input method
-
-        // const priorityFormLabel=document.createElement("label");
-        // priorityFormLabel.textContent="Priority";
-
-        // const todoFormPriority=document.createElement("input");
-        // todoFormPriority.required=true;
-        // todoFormPriority.id="todo-priority";
+        
 
             //radio button method
         const priorities = ["Low", "Medium", "High"];
