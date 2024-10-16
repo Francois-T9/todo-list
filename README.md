@@ -5,7 +5,7 @@ Exercise from [_The Odin Project_](https://www.theodinproject.com/lessons/node-p
 
 ## Live view of the todo list
 
-🔗[Add tasks!]() Unavailable for now
+🔗[Add tasks!](https://raw.githack.com/Francois-T9/todo-list/gh-pages/index.html)
 
 ## Things to be implemented
 -Project name popup instead of prompt() </br>
