@@ -1,33 +1,29 @@
 :root {
-  --color-one: #96858F;
-  --color-two: #6D7993;
-  --color-three: #9099A2;
-  --color-four: #D5D5D5;
-  --color-five: #0E161B;
-  
-  
+  --color-one: #96858f;
+  --color-two: #6d7993;
+  --color-three: #9099a2;
+  --color-four: #d5d5d5;
+  --color-five: #0e161b;
+
   --background-project: linear-gradient(#e66465, #9198e5);
-  --background-header:linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%);
+  --background-header: linear-gradient(
+    178.6deg,
+    rgb(20, 36, 50) 11.8%,
+    rgb(124, 143, 161) 83.8%
+  );
   --background-sidebar: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-
-
 }
 
 * {
   padding: 0;
   margin: 0;
   font-family: "Agdasima", sans-serif;
-
-  
-  
 }
 .container {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 4fr;
   height: 100vh;
-
-  
 }
 
 .container .header {
@@ -38,7 +34,11 @@
   grid-template-columns: 1fr 4fr;
   align-items: center;
   padding: 20px;
-  background: linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%);
+  background: linear-gradient(
+    178.6deg,
+    rgb(20, 36, 50) 11.8%,
+    rgb(124, 143, 161) 83.8%
+  );
 }
 
 .container .header h1 {
@@ -51,9 +51,7 @@
   grid-template-rows: 1fr 4fr;
   grid-row: 1/-1;
   grid-column: 1;
-  background:var(--background-sidebar);
- 
-
+  background: var(--background-sidebar);
 }
 .container .sidebar .sidebar-title {
   justify-self: center;
@@ -63,19 +61,17 @@
 .container .sidebar .sidebar-project-menu {
   display: flex;
   flex-direction: column;
-  
+
   width: 100%;
   grid-row: 2;
-  
+
   justify-self: center;
   gap: 40px;
   align-items: center;
- 
 }
 .container .sidebar .sidebar-project-menu .sidebar-projects {
   display: grid;
   gap: 20px;
-
 }
 .container .sidebar .sidebar-project-menu .sidebar-projects div {
   width: 100%;
@@ -98,9 +94,6 @@
   width: 8em;
   justify-self: center;
   height: 3em;
-  
- 
-  
 }
 .container .sidebar .sidebar-project-menu .sidebar-projects img {
   width: 2em;
@@ -109,8 +102,7 @@
 
 .container .sidebar #sidebar-create-project-button,
 .container .main-container > div button,
-.container .main-container > div input[type="submit"]
- {
+.container .main-container > div input[type="submit"] {
   background: var(--background-project);
   border: none;
   color: white;
@@ -123,13 +115,11 @@
   height: 3em;
   cursor: pointer;
 
-  transition: all .2s ease-in-out; 
-
+  transition: all 0.2s ease-in-out;
 }
 
 .container .sidebar #sidebar-create-project-button:hover,
-.container .main-container > div button:hover
- {
+.container .main-container > div button:hover {
   transform: scale(1.1);
 }
 
@@ -143,10 +133,9 @@
 }
 
 .container .main-container .project {
-  
   display: none;
   grid-template-rows: 1fr 3fr 3fr;
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns: 1fr 1fr;
   /* background-color: var(--color-three); */
   border-radius: 20px;
   padding: 30px;
@@ -155,22 +144,16 @@
 }
 
 .container .main-container .project h3 {
-  
   grid-row: 1;
   grid-column: 1/2;
 }
-
 
 .container .main-container .project button {
   background: var(--background-header);
   grid-row: 1;
   grid-column: 2;
-
-
 }
 .container .main-container .project .todo-form-container {
-  
-  
   grid-row: 2;
   grid-column: 1/-1;
   /* display: grid; */
@@ -180,7 +163,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%)scale(0);
+  transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
   border: 1px solid black;
   z-index: 10;
@@ -188,8 +171,6 @@
   width: 500px;
   max-width: 80%;
   border-radius: 10px;
-    
-    
 }
 
 .container .main-container .project .todo-form-container .todo-form {
@@ -198,12 +179,23 @@
   justify-content: flex-start;
 }
 
-.container .main-container .project .todo-form-container .todo-form .priorities-container {
+.container
+  .main-container
+  .project
+  .todo-form-container
+  .todo-form
+  .priorities-container {
   display: flex;
   justify-content: center;
 }
 
-.container .main-container .project .todo-form-container .todo-form .priorities-container input[type="radio"] {
+.container
+  .main-container
+  .project
+  .todo-form-container
+  .todo-form
+  .priorities-container
+  input[type="radio"] {
   accent-color: #232323;
 }
 
@@ -212,11 +204,8 @@
 }
 
 .container .main-container .project .todo-form-container.active {
-  
-  transform: translate(-50%,-50%)scale(1);
-       
+  transform: translate(-50%, -50%) scale(1);
 }
-
 
 .container .main-container .project .todo-header {
   display: flex;
@@ -232,17 +221,15 @@
   background: none;
   outline: none;
   color: black;
-
 }
 
-.container .main-container .project .todo-header .todo-title{
- font-size: 1.25rem;
- font-weight: 700;
-
+.container .main-container .project .todo-header .todo-title {
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .container .main-container .project .todo-form-container {
- padding: 10px 15px;
+  padding: 10px 15px;
 }
 
 #overlay {
@@ -252,24 +239,21 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   pointer-events: none;
 }
 #overlay.active {
- opacity: 1;
- pointer-events: all;
+  opacity: 1;
+  pointer-events: all;
 }
- 
 
-
-.container .main-container .project .todo-form-container form  {
+.container .main-container .project .todo-form-container form {
   background-color: inherit;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  
 }
 
 .container .main-container .project .todo-form-container form input:focus {
@@ -277,29 +261,36 @@
   border: solid #89ddff;
 }
 
-
 .container .main-container .project .todo-form-container form input,
 input:placeholder-shown {
-  border: solid #E5E7EB 1px; /* Default gray border */
+  border: solid #e5e7eb 1px; /* Default gray border */
   /* height: 25px;
   width: 250px; */
   border-radius: 5px;
   padding-left: 15px;
-} 
+}
 
-.container .main-container .project .todo-form-container form input:invalid:not(:placeholder-shown) {
+.container
+  .main-container
+  .project
+  .todo-form-container
+  form
+  input:invalid:not(:placeholder-shown) {
   border: 1px solid red;
 }
 
-.container .main-container .project .todo-form-container form input:not([type="submit"]):valid {
+.container
+  .main-container
+  .project
+  .todo-form-container
+  form
+  input:not([type="submit"]):valid {
   border: solid green 2px;
-} 
+}
 
 .container .main-container .project input[type="submit"] {
   background-color: rgb(0, 58, 0);
-  
 }
-
 
 /* todos-display container styling */
 
@@ -313,8 +304,8 @@ input:placeholder-shown {
   align-items: flex-start;
   /* gap: 5px; */
 }
-.main-container .project .todo-display h1 ,
-.main-container .project .todo-display h4 ,
+.main-container .project .todo-display h1,
+.main-container .project .todo-display h4,
 .main-container .project .todo-display p {
   grid-column: 1;
 }
@@ -323,13 +314,10 @@ input:placeholder-shown {
   grid-row: 1;
 }
 
-
-
 .main-container .project .todo-display img {
   grid-row: 1;
   grid-column: 2;
   width: 30px;
-
 }
 
 .main-container .project .todo-display img:hover {
